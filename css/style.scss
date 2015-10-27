@@ -1,0 +1,101 @@
+$menu-icon-bg: #052b23;
+$menu-icon-color: #FFF;
+$duration: 0.5s;
+
+.menu-icon {
+    position: relative;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    
+    span {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        display: block;
+        width: 22px;
+        height: 2px;
+        background-color: $menu-icon-color;
+        transform: translateX(-50%) translateY(-50%);
+        
+        &::before, &::after {
+            content:'';
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: block;
+            width: 22px;
+            height: 2px;
+            background-color: $menu-icon-color;
+            transform: translateY(-6px);
+            transition: transform $duration;
+        }
+        
+        &::after {
+            transform: translateY(6px);
+        }
+        
+    }
+    
+    &:hover {
+        
+        span::before {
+            transform: translateY(-8px);
+        }
+        
+        span::after {
+            transform: translateY(8px);
+        }
+        
+    }
+}
+
+.menu-icon-cross {
+    
+    transition: transform $duration;
+    
+    span::before, span::after{
+        transform-origin: 50% 50%;
+        }
+    
+    span{
+         z-index:2;
+        transition: background $duration, transform $duration;
+    }
+    
+    svg{ 
+        position: relative;
+        z-index: 1;
+        fill: $menu-icon-bg;
+        stroke-width: 1px;
+        stroke: $menu-icon-color;
+        stroke-dasharray: 170;
+        stroke-dashoffset: 170;
+        transition: stroke-dashoffset $duration, transform $duration;
+    }
+    
+    
+    &.is-opened {
+        transform: rotate(180deg);
+        span {
+            background: transparent;
+        }
+        
+        span::before {
+            transform: translateY(0) rotate(45deg);
+        }
+        
+        span::after {
+            transform: translateY(0) rotate(-45deg);
+        }
+        
+        svg{
+            stroke-dashoffset: 0;
+            transform: rotate(-180deg);
+    }
+}
+    
+}
+
+
+

@@ -1,0 +1,61 @@
+.menu-icon {
+  position: relative;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%; }
+  .menu-icon span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    width: 22px;
+    height: 2px;
+    background-color: #FFF;
+    transform: translateX(-50%) translateY(-50%); }
+    .menu-icon span::before, .menu-icon span::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      width: 22px;
+      height: 2px;
+      background-color: #FFF;
+      transform: translateY(-6px);
+      transition: transform 0.5s; }
+    .menu-icon span::after {
+      transform: translateY(6px); }
+  .menu-icon:hover span::before {
+    transform: translateY(-8px); }
+  .menu-icon:hover span::after {
+    transform: translateY(8px); }
+
+.menu-icon-cross {
+  transition: transform 0.5s; }
+  .menu-icon-cross span::before, .menu-icon-cross span::after {
+    transform-origin: 50% 50%; }
+  .menu-icon-cross span {
+    z-index: 2;
+    transition: background 0.5s, transform 0.5s; }
+  .menu-icon-cross svg {
+    position: relative;
+    z-index: 1;
+    fill: #052b23;
+    stroke-width: 1px;
+    stroke: #FFF;
+    stroke-dasharray: 170;
+    stroke-dashoffset: 170;
+    transition: stroke-dashoffset 0.5s, transform 0.5s; }
+  .menu-icon-cross.is-opened {
+    transform: rotate(180deg); }
+    .menu-icon-cross.is-opened span {
+      background: transparent; }
+    .menu-icon-cross.is-opened span::before {
+      transform: translateY(0) rotate(45deg); }
+    .menu-icon-cross.is-opened span::after {
+      transform: translateY(0) rotate(-45deg); }
+    .menu-icon-cross.is-opened svg {
+      stroke-dashoffset: 0;
+      transform: rotate(-180deg); }
+
+/*# sourceMappingURL=style.css.map */
